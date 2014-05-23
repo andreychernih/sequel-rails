@@ -13,7 +13,8 @@ module Sequel
 
       def create_migration_file
         validate_file_name!
-        migration_template 'migration.rb.erb', "db/migrate/#{file_name}.rb"
+        file_path = SequelRails.configuration.migrations_dir.join("#{file_name}.rb")
+        migration_template 'migration.rb.erb', file_path
       end
 
       protected
