@@ -12,9 +12,10 @@ module Sequel
       argument :attributes, :type => :array, :default => [], :banner => 'field:type field:type'
 
       def create_migration_file
+        file_path = SequelRails.configuration.migrations_dir.join("#{file_name}.rb")
         set_local_assigns!
         validate_file_name!
-        migration_template 'migration.rb.erb', "db/migrate/#{file_name}.rb"
+        migration_template 'migration.rb.erb', file_path
       end
 
       attr_reader :migration_action, :table_action, :column_action, :use_change

@@ -40,7 +40,7 @@ module SequelRails
       end
 
       def migrations_dir
-        Rails.root.join('db/migrate')
+        SequelRails.configuration.migration_dir || Rails.root.join('db/migrate')
       end
 
       def current_migration

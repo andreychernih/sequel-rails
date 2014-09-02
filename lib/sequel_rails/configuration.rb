@@ -52,6 +52,10 @@ module SequelRails
       end.tap { after_connect.call if after_connect.respond_to?(:call) }
     end
 
+    def migrations_dir
+      self.migration_dir || Rails.root.join('db/migrate')
+    end
+
     private
 
     def default_schema_dump
